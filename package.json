@@ -1,0 +1,8 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:NatanielCosta/node-api.git",
+  "author": "natan <nataniel08@protonmail.com>",
+  "license": "MIT"
+}
