@@ -31,7 +31,8 @@
     "postpack": "pinst --enable",
     "prepare": "husky install",
     "pretest": "clear",
-    "test": "jest --passWithNoTests",
+
+    "test": "jest --passWithNoTests --watch",
     "test:staged": "jest --passWithNoTests"
   }
 }
