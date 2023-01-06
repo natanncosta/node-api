@@ -28,6 +28,7 @@ describe('Bcrypt Adapter', () => {
 
   test('should throw if bcrypt throws', async () => {
     const sut = makeSut()
+    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     jest.spyOn(bcrypt, 'hash').mockReturnValue((new Promise((resolve, reject) => reject(new Error())) as unknown) as void)
     const promise = sut.encrypt('any_password')
     await expect(promise).rejects.toThrow()
