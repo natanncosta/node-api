@@ -16,7 +16,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
       const fakeAccount: AccountModel = {
         id: 'valid_id',
         name: 'valid_name',
-        email: 'valid_email@mail.com',
+        email: 'valid_email',
         password: 'hashed_password'
       }
       return await new Promise(resolve => resolve(fakeAccount))
@@ -24,6 +24,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
   }
   return new AddAccountRepositoryStub()
 }
+
 interface SutTypes {
   sut: DbAddAccount
   encrypterStub: Encrypter
@@ -90,5 +91,21 @@ describe('DbAddAccount Usecase', () => {
     }
     const promise = sut.add(accountData)
     await expect(promise).rejects.toThrow()
+  })
+
+  test('should returns an account when success', async () => {
+    const { sut } = makeSut()
+    const accountData = {
+      name: 'valid_name',
+      email: 'valid_email',
+      password: 'valid_password'
+    }
+    const account = await sut.add(accountData)
+    expect(account).toEqual({
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email',
+      password: 'hashed_password'
+    })
   })
 })
